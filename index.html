@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>No•Bull•SaaS — Prelaunch</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0b0b0e;
+  --fg: #ffffff;
+  --muted: #a0a0b8;
+  --magenta: #e879f9;
+  --cyan: #22d3ee;
+  --border: #232334;
+}
+body {
+  margin: 0;
+  font-family: "JetBrains Mono", monospace;
+  background: radial-gradient(1000px 700px at 10% 0%, rgba(34,211,238,0.12), transparent 55%),
+              radial-gradient(1000px 700px at 90% 10%, rgba(232,121,249,0.12), transparent 55%),
+              var(--bg);
+  color: var(--fg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  padding: 24px 16px;
+}
+
+/* HEADER */
+header {
+  text-align: center;
+  margin-top: 24px;
+}
+header h1 {
+  color: var(--cyan);
+  font-size: 26px;
+  margin: 0 0 6px 0;
+}
+header p {
+  color: var(--fg);
+  font-size: 14px;
+  margin: 0 auto;
+  max-width: 460px;
+  line-height: 1.4;
+}
+
+/* CENTER DYNAMIC TEXT */
+.center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+#theySay, #weSay {
+  font-size: clamp(17px, 3vw, 26px);
+  white-space: pre-wrap;
+  line-height: 1.4;
+  max-width: 90vw;
+}
+#theySay span { color: var(--magenta); }
+#weSay span { color: var(--cyan); }
+
+/* FOOTER GROUP */
+.footer-group {
+  margin-top: 16px;
+  margin-bottom: 24px; /* adds breathing space at bottom */
+}
+.launching {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+form {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 8px;
+  width: 100%;
+  max-width: 280px;
+}
+.formwrap {
+  background: #121218;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 3px 5px;
+}
+input[type="email"] {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--fg);
+  font-size: 13px;
+  padding: 6px 8px;
+}
+button[type="submit"] {
+  background: linear-gradient(90deg, var(--magenta), var(--cyan));
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 12px;
+}
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  padding-top: 6px;
+  margin-top: 8px;
+}
+a { color: #a78bfa; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* POPUP */
+#popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(18,18,24,0.95);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 24px;
+  z-index: 1000;
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+  animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -48%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+#popup button {
+  margin-top: 10px;
+  background: linear-gradient(90deg, var(--magenta), var(--cyan));
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+@media (max-width:600px) {
+  header h1 { font-size: 24px; }
+  header p { font-size: 13px; max-width: 340px; }
+  #theySay,#weSay { font-size: 17px; }
+  .launching { font-size: 12px; }
+  input[type="email"], button[type="submit"] { font-size: 12px; padding: 5px 8px; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>No•Bull•SaaS</h1>
+  <p>We help grandpa & grandma understand SaaS. Also 5-year-olds and CXOs, and anyone pretending to be both.</p>
+</header>
+
+<!-- DYNAMIC CENTER -->
+<div class="center">
+  <div id="theySay"><span>They say</span> seamless integration.</div>
+  <div id="weSay"><span>We say</span> API glue and prayers.</div>
+</div>
+
+<!-- FOOTER GROUP -->
+<div class="footer-group">
+  <div class="launching">🚀 Launching soon</div>
+
+  <form id="signup" name="signup" method="POST" data-netlify="true">
+    <input type="hidden" name="form-name" value="signup" />
+    <input type="hidden" name="notify" value="signup@nobullsaas.com" />
+    <div class="formwrap">
+      <input type="email" name="email" placeholder="Enter your email" required />
+      <button type="submit">Notify</button>
+    </div>
+  </form>
+
+  <footer>
+    Made with ❤️ by <a href="https://SolidGig.com" target="_blank">SolidGig.com</a>
+  </footer>
+</div>
+
+<!-- POPUP -->
+<div id="popup">
+  ✅ Thanks for signing up!  
+  <br>You're on the list.  
+  <br><small>Watch for an email from signup@nobullsaas.com</small>
+  <br>
+  <button onclick="closePopup()">OK</button>
+</div>
+
+<script>
+const pairs = [
+  {wtf:"seamless integration", nbs:"API glue and prayers"},
+  {wtf:"next-gen collaboration", nbs:"group chat with extra steps"},
+  {wtf:"AI-powered insights", nbs:"spreadsheets with adjectives"},
+  {wtf:"built for scale", nbs:"breaks at 101 users"},
+  {wtf:"unlock productivity", nbs:"sends more notifications"},
+  {wtf:"redefines simplicity", nbs:"added 4 onboarding steps"},
+  {wtf:"innovative dashboard", nbs:"charts nobody opens"},
+  {wtf:"secure cloud storage", nbs:"someone else’s computer"},
+  {wtf:"streamlined workflow", nbs:"another login"},
+  {wtf:"deep integration", nbs:"copy-paste API keys"},
+  {wtf:"zero learning curve", nbs:"you’ll still click help"},
+  {wtf:"smart automation", nbs:"rules you’ll forget exist"},
+  {wtf:"enterprise ready", nbs:"works if you pay enough"},
+  {wtf:"modern analytics", nbs:"Google Sheets, but slower"},
+  {wtf:"revolutionary CRM", nbs:"spreadsheet with avatars"},
+  {wtf:"next-gen marketing", nbs:"AI writes your buzzwords"},
+  {wtf:"context switching made easy", nbs:"one more tab"},
+  {wtf:"built for teams", nbs:"still only Bob uses it"},
+  {wtf:"customer love platform", nbs:"glorified inbox"},
+  {wtf:"end-to-end solution", nbs:"we’re not sure either"}
+];
+let i=0,t1='',t2='',stage=0;
+const el1=document.getElementById('theySay');
+const el2=document.getElementById('weSay');
+function type(){
+  const a=pairs[i].wtf,b=pairs[i].nbs;
+  const l1=`They say ${a}.`,l2=`We say ${b}.`;
+  if(stage===0){
+    if(t1.length<l1.length){t1=l1.slice(0,t1.length+1);}
+    else{stage=1;setTimeout(type,500);return;}
+    el1.innerHTML=`<span>They say</span>${t1.slice(8)}`;
+  }
+  else if(stage===1){
+    if(t2.length<l2.length){t2=l2.slice(0,t2.length+1);}
+    else{stage=2;setTimeout(type,1700);return;}
+    el2.innerHTML=`<span>We say</span>${t2.slice(6)}`;
+  }
+  else if(stage===2){
+    if(t2.length>0){t2=t2.slice(0,-1);el2.innerHTML=`<span>We say</span>${t2.slice(6)}`;}
+    else if(t1.length>0){t1=t1.slice(0,-1);el1.innerHTML=`<span>They say</span>${t1.slice(8)}`;}
+    else{stage=0;t1='';t2='';i=(i+1)%pairs.length;}
+  }
+  setTimeout(type,(stage===2)?30:45);
+}
+window.addEventListener('DOMContentLoaded',()=>{type();});
+
+// popup
+function showPopup(){
+  const popup=document.getElementById('popup');
+  popup.style.display='block';
+  setTimeout(()=>popup.style.display='none',4000);
+}
+function closePopup(){
+  document.getElementById('popup').style.display='none';
+}
+document.getElementById('signup').addEventListener('submit',e=>{
+  e.preventDefault();
+  fetch('/',{
+    method:'POST',
+    headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body:new URLSearchParams(new FormData(e.target)).toString()
+  }).then(()=>{
+    e.target.reset();
+    showPopup();
+  });
+});
+</script>
+</body>
+</html>
