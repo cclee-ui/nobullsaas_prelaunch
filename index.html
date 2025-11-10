@@ -236,20 +236,21 @@ const el1=document.getElementById('theySay');
 const el2=document.getElementById('weSay');
 function type(){
   const a=pairs[i].wtf,b=pairs[i].nbs;
-  const l1=`WTF they say ${a}.`,l2=`We say ${b}.`;
+  const l1=`WTF they say ${a}.`; // <-- note space added
+  const l2=`We say ${b}.`;
   if(stage===0){
     if(t1.length<l1.length){t1=l1.slice(0,t1.length+1);}
     else{stage=1;setTimeout(type,500);return;}
-    el1.innerHTML=`<span>WTF they say</span>${t1.slice(13)}`;
+    el1.innerHTML=`<span>WTF they say</span> ${t1.slice(13)}`; // <-- space added
   }
   else if(stage===1){
     if(t2.length<l2.length){t2=l2.slice(0,t2.length+1);}
     else{stage=2;setTimeout(type,1700);return;}
-    el2.innerHTML=`<span>We say</span>${t2.slice(6)}`;
+    el2.innerHTML=`<span>We say</span> ${t2.slice(6)}`;
   }
   else if(stage===2){
-    if(t2.length>0){t2=t2.slice(0,-1);el2.innerHTML=`<span>We say</span>${t2.slice(6)}`;}
-    else if(t1.length>0){t1=t1.slice(0,-1);el1.innerHTML=`<span>WTF they say</span>${t1.slice(13)}`;}
+    if(t2.length>0){t2=t2.slice(0,-1);el2.innerHTML=`<span>We say</span> ${t2.slice(6)}`;}
+    else if(t1.length>0){t1=t1.slice(0,-1);el1.innerHTML=`<span>WTF they say</span> ${t1.slice(13)}`;}
     else{stage=0;t1='';t2='';i=(i+1)%pairs.length;}
   }
   setTimeout(type,(stage===2)?30:45);
@@ -257,19 +258,19 @@ function type(){
 window.addEventListener('DOMContentLoaded',()=>{type();});
 
 // popup for Formspree
-const form = document.getElementById('signup');
-form.addEventListener('submit', async (e) => {
+const form=document.getElementById('signup');
+form.addEventListener('submit',async(e)=>{
   e.preventDefault();
-  const data = new FormData(form);
-  const response = await fetch(form.action, {
-    method: 'POST',
-    body: data,
-    headers: { 'Accept': 'application/json' }
+  const data=new FormData(form);
+  const response=await fetch(form.action,{
+    method:'POST',
+    body:data,
+    headers:{'Accept':'application/json'}
   });
-  if (response.ok) {
+  if(response.ok){
     form.reset();
     showPopup();
-  } else {
+  }else{
     alert('Something went wrong. Please try again.');
   }
 });
