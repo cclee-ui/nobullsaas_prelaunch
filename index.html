@@ -187,14 +187,13 @@ a:hover { text-decoration: underline; }
 <div class="footer-group">
   <div class="launching">🚀 Launching soon</div>
 
-  <form id="signup" name="signup" method="POST" data-netlify="true">
-    <input type="hidden" name="form-name" value="signup" />
-    <input type="hidden" name="notify" value="signup@nobullsaas.com" />
-    <div class="formwrap">
-      <input type="email" name="email" placeholder="Enter your email" required />
-      <button type="submit">Notify</button>
-    </div>
-  </form>
+  <form id="signup" action="https://formspree.io/f/your_form_id" method="POST">
+  <div class="formwrap">
+    <input type="email" name="email" placeholder="Enter your email" required />
+    <button type="submit">Notify</button>
+  </div>
+</form>
+
 
   <footer>
     Made with ❤️ by <a href="https://SolidGig.com" target="_blank">SolidGig.com</a>
