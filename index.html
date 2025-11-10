@@ -76,8 +76,8 @@ header p {
 
 /* FOOTER GROUP */
 .footer-group {
-  margin-top: 40px;    /* same as header margin-top */
-  margin-bottom: 40px; /* perfectly symmetrical spacing */
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 .launching {
   color: var(--muted);
@@ -179,7 +179,7 @@ a:hover { text-decoration: underline; }
 
 <!-- DYNAMIC CENTER -->
 <div class="center">
-  <div id="theySay"><span>They say</span> seamless integration.</div>
+  <div id="theySay"><span>WTF they say</span> seamless integration.</div>
   <div id="weSay"><span>We say</span> API glue and prayers.</div>
 </div>
 
@@ -187,13 +187,12 @@ a:hover { text-decoration: underline; }
 <div class="footer-group">
   <div class="launching">🚀 Launching soon</div>
 
-  <form id="signup" action="https://formspree.io/f/your_form_id" method="POST">
-  <div class="formwrap">
-    <input type="email" name="email" placeholder="Enter your email" required />
-    <button type="submit">Notify</button>
-  </div>
-</form>
-
+  <form id="signup" action="https://formspree.io/f/mgvrwbla" method="POST">
+    <div class="formwrap">
+      <input type="email" name="email" placeholder="Enter your email" required />
+      <button type="submit">Notify</button>
+    </div>
+  </form>
 
   <footer>
     Made with ❤️ by <a href="https://SolidGig.com" target="_blank">SolidGig.com</a>
@@ -237,11 +236,11 @@ const el1=document.getElementById('theySay');
 const el2=document.getElementById('weSay');
 function type(){
   const a=pairs[i].wtf,b=pairs[i].nbs;
-  const l1=`They say ${a}.`,l2=`We say ${b}.`;
+  const l1=`WTF they say ${a}.`,l2=`We say ${b}.`;
   if(stage===0){
     if(t1.length<l1.length){t1=l1.slice(0,t1.length+1);}
     else{stage=1;setTimeout(type,500);return;}
-    el1.innerHTML=`<span>They say</span>${t1.slice(8)}`;
+    el1.innerHTML=`<span>WTF they say</span>${t1.slice(13)}`;
   }
   else if(stage===1){
     if(t2.length<l2.length){t2=l2.slice(0,t2.length+1);}
@@ -250,14 +249,30 @@ function type(){
   }
   else if(stage===2){
     if(t2.length>0){t2=t2.slice(0,-1);el2.innerHTML=`<span>We say</span>${t2.slice(6)}`;}
-    else if(t1.length>0){t1=t1.slice(0,-1);el1.innerHTML=`<span>They say</span>${t1.slice(8)}`;}
+    else if(t1.length>0){t1=t1.slice(0,-1);el1.innerHTML=`<span>WTF they say</span>${t1.slice(13)}`;}
     else{stage=0;t1='';t2='';i=(i+1)%pairs.length;}
   }
   setTimeout(type,(stage===2)?30:45);
 }
 window.addEventListener('DOMContentLoaded',()=>{type();});
 
-// popup
+// popup for Formspree
+const form = document.getElementById('signup');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const data = new FormData(form);
+  const response = await fetch(form.action, {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  });
+  if (response.ok) {
+    form.reset();
+    showPopup();
+  } else {
+    alert('Something went wrong. Please try again.');
+  }
+});
 function showPopup(){
   const popup=document.getElementById('popup');
   popup.style.display='block';
@@ -266,17 +281,6 @@ function showPopup(){
 function closePopup(){
   document.getElementById('popup').style.display='none';
 }
-document.getElementById('signup').addEventListener('submit',e=>{
-  e.preventDefault();
-  fetch('/',{
-    method:'POST',
-    headers:{'Content-Type':'application/x-www-form-urlencoded'},
-    body:new URLSearchParams(new FormData(e.target)).toString()
-  }).then(()=>{
-    e.target.reset();
-    showPopup();
-  });
-});
 </script>
 </body>
 </html>
